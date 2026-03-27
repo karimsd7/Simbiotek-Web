@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simbiotek | Saborizantes, Colorantes e Insumos Industriales</title>
+    <meta name="description" content="Líderes en insumos para la industria alimenticia y cosmética. Saborizantes, colorantes y empaque industrial con cobertura nacional.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --verde-profundo: #164A3E;
+            --ambar-miel: #D69A1C;
+            --crema-suave: #F7F1E6;
+            --blanco-puro: #FFFFFF;
+            --negro-footer: #111111;
+            --charcoal: #2F2F2F;
+            --gris-subtext: #606060;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'DM Sans', sans-serif; background: var(--blanco-puro); color: var(--charcoal); line-height: 1.6; }
+
+        /* --- NAVEGACIÓN --- */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0.8rem 5%; background: var(--blanco-puro);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+        
+        .logo-wrapper { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo { height: 55px; width: auto; object-fit: contain; }
+        .logo-text { font-family: 'Fraunces', serif; font-weight: 900; font-size: 1.6rem; color: #000000; letter-spacing: 1px; }
+
+        .nav-links { display: flex; gap: 1.8rem; list-style: none; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--verde-profundo); font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--ambar-miel); }
+        .btn-nav { background: var(--ambar-miel); color: white !important; padding: 0.7rem 1.4rem; border-radius: 6px; }
+
+        .menu-toggle { display: none; font-size: 1.6rem; cursor: pointer; color: var(--verde-profundo); }
+
+        /* --- HERO --- */
+        .hero {
+            min-height: 90vh; display: grid; grid-template-columns: 1.1fr 0.9fr;
+            align-items: center; padding: 130px 5% 70px; gap: 50px;
+        }
+        .hero-text h1 { font-family: 'Fraunces', serif; font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; color: var(--verde-profundo); margin-bottom: 1.5rem; }
+        .hero-text h1 em { color: var(--ambar-miel); font-style: italic; }
+        .hero-text p { font-size: 1.1rem; color: var(--gris-subtext); max-width: 580px; margin-bottom: 2.5rem; }
+        
+        .hero-visual { position: relative; display: flex; justify-content: center; }
+        .hero-img { width: 100%; max-width: 500px; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+
+        /* --- TICKER --- */
+        .ticker { background: var(--verde-profundo); color: white; padding: 16px 0; overflow: hidden; white-space: nowrap; border-top: 2px solid var(--ambar-miel); }
+        .ticker-track { display: inline-block; animation: scroll 40s linear infinite; }
+        .ticker-track span { font-weight: 500; text-transform: uppercase; letter-spacing: 2px; margin-right: 50px; font-size: 0.85rem; }
+        @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        /* --- PRODUCTOS B2B --- */
+        .section { padding: 90px 5%; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-family: 'Fraunces', serif; font-size: 2.8rem; color: var(--verde-profundo); margin-bottom: 1rem; }
+        .section-header p { max-width: 800px; margin: 0 auto; color: var(--gris-subtext); }
+        
+        .grid-servicios { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .card { background: white; padding: 40px; border-radius: 15px; border: 1px solid rgba(0,0,0,0.05); transition: 0.3s; }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .card-icon { font-size: 2.5rem; margin-bottom: 20px; display: block; }
+        .card h3 { font-family: 'Fraunces', serif; color: var(--verde-profundo); margin-bottom: 15px; }
+
+        /* --- SERVICIO Y CALIDAD --- */
+        .specialty { background: var(--crema-suave); display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .specialty-content h2 { font-family: 'Fraunces', serif; font-size: 2.8rem; color: var(--verde-profundo); margin-bottom: 1.5rem; }
+        .badge { background: var(--ambar-miel); color: white; padding: 5px 15px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; margin-bottom: 10px; display: inline-block; }
+        .trust-box { border-left: 4px solid var(--ambar-miel); padding-left: 20px; margin-top: 25px; }
+        .trust-box h4 { color: var(--verde-profundo); font-weight: 700; }
+
+        /* --- CONTACTO / NOSOTROS --- */
+        .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+        .wa-button { 
+            display: inline-flex; align-items: center; gap: 10px; background: #25D366; color: white; 
+            padding: 1.2rem 2.5rem; border-radius: 10px; text-decoration: none; font-weight: 700; transition: 0.3s;
+        }
+        .wa-button:hover { background: #1ebe57; transform: scale(1.02); }
+
+        /* --- PIE DE PÁGINA --- */
+        footer { background: var(--negro-footer); color: rgba(255,255,255,0.6); padding: 60px 5% 30px; text-align: center; }
+        .footer-logo { font-family: 'Fraunces', serif; font-size: 1.8rem; color: white; letter-spacing: 2px; margin-bottom: 10px; display: block; font-weight: 900; }
+
+        /* Mobile */
+        @media (max-width: 968px) {
+            .hero, .specialty, .contact-wrapper { grid-template-columns: 1fr; text-align: center; }
+            .nav-links { display: none; }
+            .menu-toggle { display: block; }
+            .hero-visual { order: -1; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#inicio" class="logo-wrapper">
+            <img src="Logo Simbiotek 2025.png" alt="Simbiotek" class="logo">
+            <span class="logo-text">Simbiotek</span>
+        </a>
+        <div class="menu-toggle" id="mobile-menu">☰</div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Productos B2B</a></li>
+            <li><a href="#calidad">Servicio y Calidad</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="https://wa.me/523315368612" class="btn-nav">WhatsApp</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero" id="inicio">
+        <div class="hero-text">
+            <div class="badge">Insumos Industriales Especializados</div>
+            <h1>Ingredientes que <em>transforman</em> su producto final.</h1>
+            <p>Proveemos Saborizantes y colorantes de alta concentración para la industria alimenticia y cosmética. Insumos para la fabricación de Miel Comercial y Soluciones técnicas con volúmenes flexibles.</p>
+            <a href="https://wa.me/523315368612" class="wa-button">
+                <span>📲</span> Solicita tu KIT de muestras
+            </a>
+        </div>
+        <div class="hero-visual">
+            <img src="656542664_4358294197776863_4377396873636591223_n.jpg" alt="Insumos Simbiotek" class="hero-img">
+        </div>
+    </header>
+
+    <div class="ticker">
+        <div class="ticker-track">
+            <span>SABORIZANTE MIEL</span>
+            <span>Miel Comercial</span>
+            <span>PIGMENTOS APERLADOS EXCLUSIVOS</span>
+            <span>Fructosa Grado Alimenticio</span>
+            <span>Insumos Cosméticos</span>
+            <span>Empaque Industrial</span>
+            <span>SABORIZANTE MIEL</span>
+            <span>Miel Comercial</span>
+            <span>PIGMENTOS APERLADOS EXCLUSIVOS</span>
+        </div>
+    </div>
+
+    <section class="section" id="servicios">
+        <div class="section-header">
+            <h2>Nuestras Líneas de Insumos</h2>
+            <p>Soluciones de calidad para fabricantes de Miel comercial, Panificadoras, Heladerías, Repostería de alto nivel y Desarrollo de productos cosméticos</p>
+        </div>
+        <div class="grid-servicios">
+            <div class="card">
+                <span class="card-icon">🧪</span>
+                <h3>Sabor y Color</h3>
+                <p>Concentrados de alto rendimiento para alimentos. Vainillas, color caramelo y sabores frutales técnicos.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">💄</span>
+                <h3>Industria Cosmética</h3>
+                <p>Insumos de alta calidad para fabricantes y desarrolladores de productos cosméticos y de cuidado personal.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">📦</span>
+                <h3>Envasado y Empaque</h3>
+                <p>Venta de producto para envasado profesional: bidones, frascos y soluciones de empaque industrial.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🍯</span>
+                <h3>Base para Mieles</h3>
+                <p>Jarabe de fructosa y edulcorantes estables para la producción masiva de miel comercial.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">✨</span>
+                <h3>Reposteria Premium & Pigmentos Aperlados</h3>
+                <p>Kits especializados con colorantes de alta pureza y exclusivos pigmentos aperlados para acabados de lujo.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🔬</span>
+                <h3>Desarrollo de Fórmulas B2B</h3>
+                <p>¿Buscas un perfil único? Creamos la formulación que tu producto necesita bajo estricta confidencialidad.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section specialty" id="calidad">
+        <div class="specialty-visual">
+            <div style="background:var(--verde-profundo); height:400px; border-radius:20px; display:flex; align-items:center; justify-content:center; color:white;">
+                <h2 style="font-family:'Fraunces'; font-size:3rem; color:var(--ambar-miel);">30+</h2>
+            </div>
+        </div>
+        <div class="specialty-content">
+            <div class="badge">Servicio y Calidad</div>
+            <h2>La experiencia nos respalda</h2>
+            <p>30 años de experiencia en el área de Innovación y desarrollo de nuevos productos, Simbiotek entiende la química detrás de la formulación. No somos solo comercializadores; somos tus aliados técnicos.</p>
+            <div class="trust-box">
+                <h4>✓ Asesoría de Expertos</h4>
+                <p>Habla directamente con asesores expertos para estabilizar tu producción y optimizar insumos.</p>
+            </div>
+            <div class="trust-box">
+                <h4>✓ Confidencialidad</h4>
+                <p>Protegemos la integridad de sus fórmulas y procesos con total discreción profesional.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="nosotros">
+        <div class="contact-wrapper">
+            <div>
+                <h2>Cobertura Nacional</h2>
+                <p>Con sede en Guadalajara atendemos con eficiencia y enviamos a todo el territorio nacional.</p>
+                <div class="trust-box">
+                    <h4>Solicita tus muestras</h4>
+                    <p style="font-size: 0.9rem;">(Puede generar costo de envío según locación) <br> 
+                    <strong>*Por tiempo limitado:</strong> se hace descuento del costo de envío de las muestras en la primer compra.</p>
+                </div>
+            </div>
+            <div style="text-align: center; background: var(--crema-suave); padding: 40px; border-radius: 15px;">
+                <h3>Solicita nuestro Catálogo de productos</h3>
+                <p>Acceda a nuestra lista completa de insumos y precios competitivos.</p>
+                <br>
+                <a href="https://wa.me/523315368612" class="wa-button">WhatsApp +52 331 536 8612</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <span class="footer-logo">SIMBIOTEK</span>
+        <p>Insumos Profesionales para la Industria Alimenticia y Cosmética.</p>
+        <p>Guadalajara, Jalisco, México. © 2026</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            navLinks.style.display = navLinks.classList.contains('active') ? 'flex' : 'none';
+        });
+    </script>
+</body>
+</html>
